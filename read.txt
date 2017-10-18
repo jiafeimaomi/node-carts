@@ -1,0 +1,51 @@
+入口文件：app.js
+
+Node中的核心模块分两类：
+    一类是自带的核心模块，如http、tcp等，
+    第二类是第三方核心模块，express就是与http对应的第三方核心模块，用于处理http请求，
+    var express = require('express')　//express就是与http对应的第三方核心模块，用于处理http请求
+    var app = express()　//express模块导出的入口函数
+
+模块的引入：
+    require()
+
+模块的使用：
+    use()
+
+模块暴漏：
+    module.exports
+
+
+表结构设计：　
+    common目录下文件
+
+
+项目的根目录：public目录
+//指定本地静态资源访问的路径
+app.use(express.static(require('path').join(__dirname, 'public')));
+
+安装模块：　npm　install 模块名 --save 
+删除模块：　npm uninstall 模块名 --save
+
+连接数据库:
+mongoose.connect('mongodb://localhost:27017/lp', { config: { autoIndex: false } });
+
+解析请求的参数:
+var bodyParser = require('body-parser')
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({extended: true}))
+
+
+启动服务：　node app.js
+
+浏览器访问：　http://127.0.0.1:8080/html/register.html
+
+git@github.com:jiafeimaomi/node-carts.git
+
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin git@github.com:jiafeimaomi/node-carts.git
+git push -u origin master
+
+

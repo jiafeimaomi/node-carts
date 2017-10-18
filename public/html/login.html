@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>登录页面</title>
+    <style>
+        input, span{
+            display: block;
+            margin: 10px 0;
+        }
+        span{
+            width: 100px;
+            height: 40px;
+            text-align: center;
+            line-height: 40px;
+            border: 1px solid #eaeaea;
+        }
+        
+    </style>
+</head>
+<body>
+    <form action="/login">
+        <input name="username" type="text" value="aa" placeholder="用户名"/>
+        <input name="password" type="password" value="123" placeholder="密码"/>
+        <input type="button" onclick="login()" value="登录">
+        <a href="register.html">注册</a>
+    </form>
+</body>
+<script src="../js/jquery.js" type="text/javascript"></script>
+<script>
+    function login(){
+        var data = $('form').serialize()
+        $.ajax({
+            url:'/login',
+            type:'POST',
+            data: data,
+            success: function(res, status){
+                if(status === 'success'){
+                    location.href = 'home.html'
+                }
+            },
+            error: function(res, err){
+                console.log('error----error')
+                // location.href = 'register.html'
+            }
+        })
+    }
+</script>
+</html>
